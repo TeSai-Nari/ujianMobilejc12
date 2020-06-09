@@ -6,7 +6,6 @@ import {userLogin} from '../redux/Actions/authAction';
 
 const Login = ({navigation}) => {
     let [username, setUsername] = useState('');
-    console.log(username)
     let dispatch = useDispatch();
     return (
         <View style={styles.container}>

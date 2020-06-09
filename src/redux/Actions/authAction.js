@@ -63,15 +63,9 @@ export const imageAction = (data) => {
     }
 }
 
-export const userLogout = () => {
-    return async dispatch => {
-        try {
-            dispatch({
-                type: 'USER_LOGOUT'
-            })
-            await AsyncStorage.removeItem('username')
-        } catch (error) {
-            
-        }
+export const userLogout=()=>{
+    return async (dispatch)=>{
+        await AsyncStorage.removeItem('username')
+        dispatch({type:'USER_LOGOUT'})
     }
 }

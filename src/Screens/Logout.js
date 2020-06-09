@@ -1,24 +1,15 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { userLogout } from '../redux/Actions/authAction';
-import AsyncStorage from '@react-native-community/async-storage';
-import { Button } from 'react-native-elements';
-
-const Logout = () => {
-    let dispatch = useDispatch();
-
-    const handleLogout = () => {
-        dispatch(userLogout())
-        AsyncStorage.removeItem()
-    }
-
+import React from 'react';
+import {View,StyleSheet} from 'react-native';
+import {userLogout} from './../redux/Actions'
+import {Button} from 'react-native-elements';
+import {connect} from 'react-redux'
+const Logout = ({userLogout}) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.logContainerStyle}>
             <View>
                 <Button 
-                    title="LOGOUT"
-                    onPress={handleLogout}
+                    title="LOG OUT"
+                    onPress={userLogout}
                     containerStyle={{
                         alignItems: 'center'
                     }}
@@ -31,13 +22,11 @@ const Logout = () => {
         </View>
     );
 };
-
 const styles = StyleSheet.create({
-    container: {
+    logContainerStyle: {
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center'
     }
 })
-
-export default Logout;
+export default connect(null,{userLogout})(Logout);
